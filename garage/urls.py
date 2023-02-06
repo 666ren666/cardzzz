@@ -7,8 +7,7 @@ app_name = 'cards'
 urlpatterns = [
 
     path('admin/', admin.site.urls),
-    # path('', views.main, name="main"),
-    path('', views.pick_game, name="main"),
+    path('', views.main, name="main"),
 
     path('login', views.login, name="login"),
     path('signin', views.signin, name="signin"),
