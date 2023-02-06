@@ -22,12 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-if 'RENDER' in os.environ:
-    SECRET_KEY = os.environ.get("SECRET_KEY")
-    DB_PASSWORD = os.environ.get("DB_PASS") 
-else:
-    SECRET_KEY = 'django-insecure-e#e@ffr+ej_1hq%li4!w13r0c(k)5p_*j_l8zc)hwvq^17wp!k'
-    DB_PASSWORD = ""
+
+SECRET_KEY = 'django-insecure-e#e@ffr+ej_1hq%li4!w13r0c(k)5p_*j_l8zc)hwvq^17wp!k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -84,27 +80,12 @@ WSGI_APPLICATION = 'garage.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-
-if 'RENDER' in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'shopping_db',
-            'USER': 'shopping_db_user',
-            'PASSWORD': DB_PASSWORD , # 'gbuNAzAccVPjyZtqPESeqj0ki93FPGOe',
-            # 'HOST': 'dpg-cf422dmn6mps0qnc92pg-a',
-            'HOST': 'dpg-cf422dmn6mps0qnc92pg-a.frankfurt-postgres.render.com',        
-            'PORT': '5432',
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-else:
-    DATABASES = {
-            'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-
+}
 
 
 # Password validation
